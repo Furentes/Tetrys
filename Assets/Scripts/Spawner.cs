@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
@@ -15,8 +16,23 @@ public class Spawner : MonoBehaviour
     // Constructor (called when game starts)
     void Start()
     {
+        Group.fallSpeed = 1f;
+        Grid.count = 0;
+        score.text = "Score: " + Grid.count;
         // Spawn initial group
         spawnNext();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+        if (Input.GetKey(KeyCode.F1))
+        {
+            restart();
+        }
     }
 
     public void spawnNext()
@@ -26,12 +42,10 @@ public class Spawner : MonoBehaviour
         int i = Random.Range(0, groups.Length);
         // Spawn group at current spawner position
         Instantiate(groups[i], transform.position, Quaternion.identity);
-
-        if (Group.gameOver) gameOver();
     }
 
-    public void gameOver()
+    void restart()
     {
-        score.text = "GAME OVER";
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
