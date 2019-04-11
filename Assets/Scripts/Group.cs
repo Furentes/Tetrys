@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Group : MonoBehaviour
@@ -9,15 +10,28 @@ public class Group : MonoBehaviour
     float lastLeft = 0;
     float lastRight = 0;
     public static float fallSpeed = 1;
+    public static bool gameOver = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        TextMeshProUGUI overTxt = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().overText;
         // Default position not valid? Then it's game over
         if (!isValidGridPos())
         {
-            Debug.Log("GAME OVER");
+            gameOver = true;
+            overTxt.text = "GAME OVER";
             Destroy(gameObject);
+        }
+
+        Renderer rend;
+        Color randomColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        foreach (Transform child in transform)
+        {
+            print("Foreach loop: " + child);
+            rend = child.GetComponent<Renderer>();
+
+            rend.material.color = randomColor;
         }
     }
 

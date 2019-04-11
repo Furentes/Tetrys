@@ -8,7 +8,7 @@ public class Grid : MonoBehaviour
     public static int w = 10;
     public static int h = 20;
     public static Transform[,] grid = new Transform[w, h];
-    private static int count = 0;
+    public static int count = 0;
 
     // Start is called before the first frame update
     void Start()
