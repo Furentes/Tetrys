@@ -12,11 +12,12 @@ public class Spawner : MonoBehaviour
     public TextMeshProUGUI score;
     public TextMeshProUGUI overText;
     public bool over = false;
+    public float fallSpeed = 1.0f;
 
     // Constructor (called when game starts)
     void Start()
     {
-        Group.fallSpeed = 1f;
+        Group.fallSpeed = fallSpeed;
         Grid.count = 0;
         score.text = "Score: " + Grid.count;
         // Spawn initial group
