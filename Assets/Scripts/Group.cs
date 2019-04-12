@@ -88,7 +88,8 @@ public class Group : MonoBehaviour
                 transform.Rotate(0, 0, 90);
         }
         // Move Downwards and Fall
-        else if ((Input.GetKey(KeyCode.DownArrow) && Time.time - lastFall >= .05) ||
+
+        if ((Input.GetKey(KeyCode.DownArrow) && Time.time - lastFall >= .05) ||
                  Time.time - lastFall >= fallSpeed)
         {
             // Modify position
