@@ -87,3 +87,4 @@
 
 # Custom
 *.shader linguist-vendored
+*.cginc linguist-vendored
