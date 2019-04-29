@@ -28,10 +28,12 @@ public class Spawner : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Escape))
         {
+            // End the game
             Application.Quit();
         }
         if (Input.GetKey(KeyCode.F1))
         {
+            // Restart the game
             restart();
         }
     }

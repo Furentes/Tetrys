@@ -28,9 +28,7 @@ public class Group : MonoBehaviour
         Color randomColor = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         foreach (Transform child in transform)
         {
-            print("Foreach loop: " + child);
             rend = child.GetComponent<Renderer>();
-
             rend.material.color = randomColor;
         }
     }
@@ -120,6 +118,7 @@ public class Group : MonoBehaviour
         }
     }
 
+    // Check if position in grid is valid
     bool isValidGridPos()
     {
         foreach (Transform child in transform)
@@ -139,6 +138,7 @@ public class Group : MonoBehaviour
         return true;
     }
 
+    // Update the grid
     void updateGrid()
     {
         // Remove old childs from grid
